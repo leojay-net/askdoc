@@ -1,1 +1,1 @@
-web: gunicorn Askdoc:wsgi --log-file -
+web: gunicorn askdoc:wsgi --log-file 
