@@ -54,7 +54,6 @@ Pygments==2.16.1
 pyinstaller==5.13.0
 pyinstaller-hooks-contrib==2023.7
 PyJWT==2.8.0
-pypiwin32==223
 pyrsistent==0.19.3
 python-dateutil==2.8.2
 python-decouple==3.8
