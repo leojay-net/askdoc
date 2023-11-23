@@ -38,10 +38,11 @@ jsbeautifier==1.14.8
 jsonschema==4.17.3
 msgpack==1.0.5
 multidict==6.0.4
-numpy==1.25.2
 openai==0.27.8
 opencv-python==4.8.0.76
+pandas==2.0.3
 passlib==1.7.4
+pdf2docx==0.5.6
 pefile==2023.2.7
 pexpect==4.8.0
 Pillow==9.5.0
@@ -54,6 +55,8 @@ Pygments==2.16.1
 pyinstaller==5.13.0
 pyinstaller-hooks-contrib==2023.7
 PyJWT==2.8.0
+PyMuPDF==1.22.5
+pypiwin32==223
 pyrsistent==0.19.3
 python-dateutil==2.8.2
 python-decouple==3.8
