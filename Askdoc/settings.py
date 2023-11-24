@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'rest_framework',
     'drf_spectacular',
     'drf_spectacular_sidecar',
@@ -214,8 +213,10 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'staticfiles'),)
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
  
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
  
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOW_ALL_ORIGINS: True
 AUTH_USER_MODEL = 'user_authentication.User'
+CORS_ALLOW_ALL_ORIGINS = True
