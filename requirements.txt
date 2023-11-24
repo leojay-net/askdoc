@@ -76,4 +76,5 @@ uritemplate==4.1.1
 urllib3==2.0.3
 virtualenv==20.24.3
 webencodings==0.5.1
+whitenoise==6.6.0
 yarl==1.9.2
