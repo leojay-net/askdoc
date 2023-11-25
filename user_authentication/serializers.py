@@ -15,7 +15,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = UserProfile
-        fields =["id", "user", "image", "age", "blood_group", "height", "weight", "genotype", "Medical_records", "date_created", "date_updated"]
+        fields =["id", "user", "age", "blood_group", "height", "weight", "genotype", "Medical_records", "date_created", "date_updated"]
 
 class UserSerializer(serializers.ModelSerializer):
     id = serializers.ReadOnlyField()

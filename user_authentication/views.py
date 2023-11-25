@@ -146,8 +146,9 @@ class Logout(GenericAPIView):
         serializer.save()
         return Response({"Response": "Successfully Logged out"}, status=status.HTTP_200_OK)
     
+
+
 class CreateUserProfile(GenericAPIView):
-   
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
     permission_classes = [IsAuthenticated]
@@ -155,7 +156,7 @@ class CreateUserProfile(GenericAPIView):
     def post(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data, context={"request", request})
         if serializer.is_valid(raise_exception=True):
-            user = User.objects.create(**serializer.validated_data)
+            user = UserProfile.objects.create(**serializer.validated_data)
             user.save()
         return Response({
             # "user_id": username.id,
@@ -166,13 +167,13 @@ class FetchUserProfile(RetrieveAPIView):
     parser_classes = [FormParser, MultiPartParser, FileUploadParser, JSONParser]
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer 
-    lookup_field = 'id'
+    lookup_field = 'user'
 
 class UserProfileUpdate(UpdateAPIView):
     #permission_classes = [IsAdminUser]   
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer 
-    lookup_field = 'id'
+    lookup_field = 'user'
 
 
 class CreateToken(GenericAPIView):

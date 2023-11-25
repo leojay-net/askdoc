@@ -135,6 +135,7 @@ paths:
           multipart/form-data:
             schema:
               $ref: '#/components/schemas/UserProfile'
+        required: true
       security:
       - jwtAuth: []
       responses:
@@ -214,6 +215,7 @@ paths:
           multipart/form-data:
             schema:
               $ref: '#/components/schemas/UserProfile'
+        required: true
       security:
       - jwtAuth: []
       - {}
@@ -449,10 +451,14 @@ components:
         tokens:
           type: string
           readOnly: true
+        user:
+          type: string
+          readOnly: true
       required:
       - email
       - password
       - tokens
+      - user
       - username
     Logout:
       type: object
@@ -525,17 +531,12 @@ components:
           readOnly: true
         user:
           type: string
-          readOnly: true
-        image:
-          type: string
-          format: uri
-          nullable: true
         age:
           type: integer
           maximum: 2147483647
           minimum: -2147483648
           nullable: true
-        bloog_group:
+        blood_group:
           type: string
           nullable: true
           maxLength: 5
@@ -669,17 +670,12 @@ components:
           readOnly: true
         user:
           type: string
-          readOnly: true
-        image:
-          type: string
-          format: uri
-          nullable: true
         age:
           type: integer
           maximum: 2147483647
           minimum: -2147483648
           nullable: true
-        bloog_group:
+        blood_group:
           type: string
           nullable: true
           maxLength: 5
