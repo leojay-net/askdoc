@@ -57,7 +57,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, related_name="user_rel", on_delete=models.CASCADE)
     image = models.ImageField(upload_to="media/", blank=True, null=True)
     age = models.IntegerField(blank=True, null=True)
-    bloog_group = models.CharField(max_length=5,  blank=True, null=True)
+    blood_group = models.CharField(max_length=5,  blank=True, null=True)
     height = models.DecimalField(max_digits=6, decimal_places=3,blank=True, null=True)
     weight = models.DecimalField(max_digits=6, decimal_places=3,blank=True, null=True)
     genotype = models.CharField(max_length=7,  blank=True, null=True)

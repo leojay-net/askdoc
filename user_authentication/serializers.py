@@ -8,14 +8,14 @@ from rest_framework_simplejwt.tokens import RefreshToken, TokenError
 
 class UserProfileSerializer(serializers.ModelSerializer):
     id = serializers.ReadOnlyField()
-    user = serializers.ReadOnlyField()
+    # user = serializers.ReadOnlyField()
     date_created = serializers.ReadOnlyField()
     date_updated = serializers.ReadOnlyField()
 
     
     class Meta:
         model = UserProfile
-        fields =["id", "user", "image", "age", "bloog_group", "height", "weight", "genotype", "Medical_records", "date_created", "date_updated"]
+        fields =["id", "user", "image", "age", "blood_group", "height", "weight", "genotype", "Medical_records", "date_created", "date_updated"]
 
 class UserSerializer(serializers.ModelSerializer):
     id = serializers.ReadOnlyField()
