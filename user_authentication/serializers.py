@@ -47,6 +47,7 @@ class UserNullSerializer(serializers.ModelSerializer):
         fields = []
 
 class LoginSerializer(serializers.ModelSerializer):
+    user =  serializers.ReadOnlyField()
     email = serializers.CharField(max_length=255, min_length=3)
     username = serializers.CharField(max_length=64, read_only=True)
     password = serializers.CharField(max_length=68, min_length=6,write_only=True)
@@ -60,7 +61,7 @@ class LoginSerializer(serializers.ModelSerializer):
         }
     class Meta:
         model = User
-        fields = ['email', 'username', 'password', 'tokens']
+        fields = ['email', 'username', 'password', 'tokens', 'user']
     def validate(self, attrs):
         email = attrs.get('email','')
         password = attrs.get('password','')

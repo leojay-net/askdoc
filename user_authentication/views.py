@@ -130,7 +130,10 @@ class Login(GenericAPIView):
     def post(self,request):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid(raise_exception=True):
-            return Response(serializer.data,status=status.HTTP_200_OK)
+            user = User.objects.get(email=serializer.data['email']).id
+            response = serializer.data
+            response['user'] = user
+            return Response(response,status=status.HTTP_200_OK)
 
 class Logout(GenericAPIView):
     serializer_class = LogoutSerializer
