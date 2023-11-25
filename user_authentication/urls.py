@@ -14,5 +14,6 @@ urlpatterns = [
     path('profile/get/<str:id>', FetchUserProfile.as_view(), name='retrieve_profile'),
     path('create/user/profile', CreateUserProfile.as_view(), name="add-profile"),
     path('create/token', CreateToken.as_view(), name="add-token"),
-    path('reset/password', resetpassword.as_view(), name="reset-password")
+    path('reset/password', resetpassword.as_view(), name="reset-password"),
+    # path('Verify_token/<int:token>', VerifyToken.as_view(), name="verufy_token")
 ]

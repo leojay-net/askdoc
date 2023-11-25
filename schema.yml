@@ -1,0 +1,734 @@
+openapi: 3.0.3
+info:
+  title: ASKDOC.AI API
+  version: 1.0.0
+  description: A PLATFORM FOR AI DIAGNOSIS
+paths:
+  /askdoc/v1/add_admin/{id}:
+    patch:
+      operationId: askdoc_v1_add_admin_partial_update
+      description: Gives user admin permission
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - askdoc
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          description: No response body
+  /askdoc/v1/all_users/:
+    get:
+      operationId: askdoc_v1_all_users_list
+      description: Create's a normal new user
+      tags:
+      - askdoc
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+          description: ''
+  /askdoc/v1/authenticate/user/login:
+    post:
+      operationId: askdoc_v1_authenticate_user_login_create
+      tags:
+      - askdoc
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Login'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Login'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Login'
+        required: true
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Login'
+          description: ''
+  /askdoc/v1/authenticate/user/logout:
+    post:
+      operationId: askdoc_v1_authenticate_user_logout_create
+      tags:
+      - askdoc
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Logout'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Logout'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Logout'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Logout'
+          description: ''
+  /askdoc/v1/create/token:
+    post:
+      operationId: askdoc_v1_create_token_create
+      tags:
+      - askdoc
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Token'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Token'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Token'
+        required: true
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+          description: ''
+  /askdoc/v1/create/user/profile:
+    post:
+      operationId: askdoc_v1_create_user_profile_create
+      tags:
+      - askdoc
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserProfile'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserProfile'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserProfile'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfile'
+          description: ''
+  /askdoc/v1/diagnosis/:
+    post:
+      operationId: askdoc_v1_diagnosis_create
+      tags:
+      - askdoc
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Chat'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Chat'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Chat'
+        required: true
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Chat'
+          description: ''
+  /askdoc/v1/profile/get/{id}:
+    get:
+      operationId: askdoc_v1_profile_get_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - askdoc
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfile'
+          description: ''
+  /askdoc/v1/profile/update/{id}:
+    put:
+      operationId: askdoc_v1_profile_update_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - askdoc
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserProfile'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserProfile'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserProfile'
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfile'
+          description: ''
+    patch:
+      operationId: askdoc_v1_profile_update_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - askdoc
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUserProfile'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUserProfile'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUserProfile'
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfile'
+          description: ''
+  /askdoc/v1/register_user/:
+    post:
+      operationId: askdoc_v1_register_user_create
+      description: Create's a normal new user
+      tags:
+      - askdoc
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+  /askdoc/v1/remove_admin/{id}:
+    delete:
+      operationId: askdoc_v1_remove_admin_destroy
+      description: Remove user admin permission
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - askdoc
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /askdoc/v1/reset/password:
+    post:
+      operationId: askdoc_v1_reset_password_create
+      tags:
+      - askdoc
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/resetpassword'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/resetpassword'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/resetpassword'
+        required: true
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/resetpassword'
+          description: ''
+  /askdoc/v1/user/get/{id}:
+    get:
+      operationId: askdoc_v1_user_get_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - askdoc
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+  /askdoc/v1/user/update/{id}:
+    put:
+      operationId: askdoc_v1_user_update_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - askdoc
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    patch:
+      operationId: askdoc_v1_user_update_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - askdoc
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+components:
+  schemas:
+    Chat:
+      type: object
+      properties:
+        problem:
+          type: string
+          maxLength: 300
+        symptoms:
+          type: string
+          maxLength: 300
+        medical_history:
+          type: string
+          maxLength: 300
+      required:
+      - medical_history
+      - problem
+      - symptoms
+    Login:
+      type: object
+      properties:
+        email:
+          type: string
+          maxLength: 255
+          minLength: 3
+        username:
+          type: string
+          readOnly: true
+          maxLength: 64
+        password:
+          type: string
+          writeOnly: true
+          maxLength: 68
+          minLength: 6
+        tokens:
+          type: string
+          readOnly: true
+      required:
+      - email
+      - password
+      - tokens
+      - username
+    Logout:
+      type: object
+      properties:
+        refresh:
+          type: string
+      required:
+      - refresh
+    PatchedUser:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        first_name:
+          type: string
+          maxLength: 255
+        last_name:
+          type: string
+          maxLength: 255
+        username:
+          type: string
+          maxLength: 255
+        email:
+          type: string
+          format: email
+          title: Email address
+          maxLength: 254
+        gender:
+          type: string
+          maxLength: 6
+        phone_number:
+          type: string
+          maxLength: 18
+        password:
+          type: string
+          writeOnly: true
+          maxLength: 68
+          minLength: 6
+        lat:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,3}(?:\.\d{0,6})?$
+          nullable: true
+        lon:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,3}(?:\.\d{0,6})?$
+          nullable: true
+        is_staff:
+          type: boolean
+          readOnly: true
+        is_active:
+          type: boolean
+          readOnly: true
+        date_created:
+          type: string
+          format: date-time
+          readOnly: true
+        date_updated:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Date_created
+    PatchedUserProfile:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        user:
+          type: string
+          readOnly: true
+        image:
+          type: string
+          format: uri
+          nullable: true
+        age:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        bloog_group:
+          type: string
+          nullable: true
+          maxLength: 5
+        height:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,3}(?:\.\d{0,3})?$
+          nullable: true
+        weight:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,3}(?:\.\d{0,3})?$
+          nullable: true
+        genotype:
+          type: string
+          nullable: true
+          maxLength: 7
+        Medical_records:
+          type: string
+          nullable: true
+          maxLength: 150
+        date_created:
+          type: string
+          format: date-time
+          readOnly: true
+        date_updated:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Date_created
+    Token:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        token:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          readOnly: true
+        expired:
+          type: boolean
+          readOnly: true
+        date_created:
+          type: string
+          format: date-time
+          readOnly: true
+        user:
+          type: string
+      required:
+      - date_created
+      - expired
+      - id
+      - token
+      - user
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        first_name:
+          type: string
+          maxLength: 255
+        last_name:
+          type: string
+          maxLength: 255
+        username:
+          type: string
+          maxLength: 255
+        email:
+          type: string
+          format: email
+          title: Email address
+          maxLength: 254
+        gender:
+          type: string
+          maxLength: 6
+        phone_number:
+          type: string
+          maxLength: 18
+        password:
+          type: string
+          writeOnly: true
+          maxLength: 68
+          minLength: 6
+        lat:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,3}(?:\.\d{0,6})?$
+          nullable: true
+        lon:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,3}(?:\.\d{0,6})?$
+          nullable: true
+        is_staff:
+          type: boolean
+          readOnly: true
+        is_active:
+          type: boolean
+          readOnly: true
+        date_created:
+          type: string
+          format: date-time
+          readOnly: true
+        date_updated:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Date_created
+      required:
+      - date_created
+      - date_updated
+      - email
+      - first_name
+      - gender
+      - id
+      - is_active
+      - is_staff
+      - last_name
+      - password
+      - phone_number
+      - username
+    UserProfile:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        user:
+          type: string
+          readOnly: true
+        image:
+          type: string
+          format: uri
+          nullable: true
+        age:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+        bloog_group:
+          type: string
+          nullable: true
+          maxLength: 5
+        height:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,3}(?:\.\d{0,3})?$
+          nullable: true
+        weight:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,3}(?:\.\d{0,3})?$
+          nullable: true
+        genotype:
+          type: string
+          nullable: true
+          maxLength: 7
+        Medical_records:
+          type: string
+          nullable: true
+          maxLength: 150
+        date_created:
+          type: string
+          format: date-time
+          readOnly: true
+        date_updated:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Date_created
+      required:
+      - date_created
+      - date_updated
+      - id
+      - user
+    resetpassword:
+      type: object
+      properties:
+        email:
+          type: string
+          maxLength: 100
+        password:
+          type: string
+          maxLength: 100
+      required:
+      - email
+      - password
+  securitySchemes:
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

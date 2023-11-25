@@ -18,9 +18,11 @@ from django.contrib import admin
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 from django.urls import path, include
 from user_authentication import urls
+from web import urls as web
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('askdoc/v1/', include(urls)),
+     path('askdoc/v1/', include(web)),
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
     path('api/schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
